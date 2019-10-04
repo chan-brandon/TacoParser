@@ -23,8 +23,6 @@ namespace LoggingKata
 
             var locations = lines.Select(parser.Parse).ToArray();
 
-            // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
-
             string first = null;
             string second = null;
             double constant;
@@ -38,20 +36,24 @@ namespace LoggingKata
 
             for (int i = 0; i < locations.Length; i++)
             {
+                logger.LogInfo("Finding first location with forloop");
                 locA = locations[i];
                 corA = locA.Location;
                 one = new GeoCoordinate(corA.Latitude, corA.Longitude);
 
                 for (int k = 0; k < locations.Length; k++)
                 {
+                    logger.LogInfo("Finding second location nested inside first forloop");
                     locB = locations[k];
                     corB = locB.Location;
                     two = new GeoCoordinate(corB.Latitude, corB.Longitude);
 
+                    logger.LogInfo("Finding distance between first and second location with .GetDistanceTo");
                     constant = one.GetDistanceTo(two);
 
                     if (distance < constant)
                     {
+                        logger.LogInfo("Checking distances with IF statement");
                         distance = constant;
                         first = locations[i].Name;
                         second = locations[k].Name;
@@ -62,8 +64,6 @@ namespace LoggingKata
             var rounded = Math.Round(distance, 2);
 
             Console.WriteLine($"The two furthest apart Taco Bells are {first} and {second}. They are a total of {rounded} meters apart.");
-
-            // HINT:  You'll need two nested forloops
         }
     }
 }
