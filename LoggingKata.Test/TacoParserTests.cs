@@ -62,6 +62,7 @@ namespace LoggingKata.Test
             var sfp4 = "Taco Bell Midtown";
             var sfp5 = "null, null, null";
             var sfp6 = "31.073638,-80.921017,Taco Bell Manhattan, null, null";
+            var sfp7 = " ,-80.921017,Taco Bell Manhattan";
 
             // Act
             var actual = shouldFailParse.Parse(sfp);
@@ -70,6 +71,7 @@ namespace LoggingKata.Test
             var actual4 = shouldFailParse.Parse(sfp4);
             var actual5 = shouldFailParse.Parse(sfp5);
             var actual6 = shouldFailParse.Parse(sfp6);
+            var actual7 = shouldFailParse.Parse(sfp7);
 
             // Assert
             Assert.Equal(actual, null);
@@ -78,7 +80,7 @@ namespace LoggingKata.Test
             Assert.Equal(actual4, null);
             Assert.Equal(actual5, null);
             Assert.Equal(actual6, null);
-
+            Assert.Equal(actual7, null);
         }
     }
 }

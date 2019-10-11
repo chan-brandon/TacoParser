@@ -16,15 +16,15 @@ namespace LoggingKata
 
             var cells = line.Split(',');
 
-            if (cells.Length < 3)
+            if (cells.Length < 3 || cells.Length > 3)
             {
-                logger.LogInfo("array.Length is less than 3");
+                logger.LogInfo("array.Length is less than or greater than 3");
                 return null;
             }
 
-            if (cells.Any(x => x.Contains("null")))
+            if (cells.Any(x => x.Contains("null") || cells[0] == " " || cells[1] == " " || cells[2] == " "))
             {
-                logger.LogInfo("array contains a null");
+                logger.LogInfo("array contains a null or a space");
                 return null;
             }
 
